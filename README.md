@@ -1,2 +1,2 @@
 # rogered
-A fake-GUI operating system, written in C++.
+Nothing here, but maybe it will be a GREAT programme later! <3
