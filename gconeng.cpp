@@ -25,18 +25,24 @@ namespace gConEng
 		SetConsoleCursorInfo(hOut, &CursorInfo);
 	}
 	
+	COORD coord(int x, int y)
+	{
+		return (COORD){x, y};
+	}
+	
 	class SimpleText
 	{
 		public:
+			COORD s, e;
 			string text;
-			int output(COORD posS, COORD posE)
+			int output(COORD posS = s, COORD posE = e)
 			{
 				int l = text.size();
 				for (int i = 0; i < l; i++)
 				{
-					if (i + posS.X >= posE.X) 
+					if (i + posS.Y >= posE.Y) 
 						return i;
-					gotoxy((COORD){posS.X + i, posS.Y});
+					gotoxy(coord(posS.X, posS.Y + i));
 					printf("%c", text[i]);
 				}
 			}
